@@ -6,13 +6,47 @@
       window.onload = function(){
         // ALL OF YOUR JAVASCRIPT CODE SHOULD GO HERE. 
         // We have to use window.onload so your JavaScript doesn't execute until the page has loaded and all HTML has been downloaded to your browser
-        
+				
+				var list = [];
+
+				for(i=0; i<10; i++){
+					list.push(window.geemails[i]);
+
+					var messageElem = document.createElement('li');
+					messageElem.id = 'messages';
+					main.appendChild(messageElem);
+					messageElem.innerHTML = list[i].date + '<br>' + list[i].sender + '<br>' + list[i].subject;
+
+					var bodyElem = document.createElement('p');
+					bodyElem.id = 'mailBody';
+					bodyElem.innerHTML = list[i].body;
+					main.appendChild(bodyElem);
+				}
+
+				mailBody.style.display = 'none'; // WHY YOU NO WORK
+
+				messages.addEventListener('click', showBody);
+
+				function showBody(){
+					if(mailBody.style.display == 'block'){
+						mailBody.style.display = 'none';
+					}else{
+						mailBody.style.display = 'block';
+					}
+				}
+
       };
     </script>
 	</head>
 	<body>
+
+		<header class="title">
+			<h3>GeeMail</h3>
+		</header>
+
 		<div class="container" id="main">
-			Build Me!
+			<!-- Build Me! -->
 		</div>
+
 	</body>
 </html>
