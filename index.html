@@ -26,7 +26,7 @@
 					var dateBox = createElem('div', 'dateElem', list[i].date);
 					main.appendChild(dateBox);
 
-					var senderBox = createElem('div', 'fromElem', list[i].sender);
+					var senderBox = createElem('div', 'fromElem', 'From: ' + list[i].sender);
 					dateBox.appendChild(senderBox);
 
 					var subjBox = createElem('div', 'subjElem', list[i].subject);
@@ -55,7 +55,7 @@
 					var dateBox = createElem('div', 'dateElem', list[randNum].date);
 					main.appendChild(dateBox);
 
-					var senderBox = createElem('div', 'fromElem', list[randNum].sender);
+					var senderBox = createElem('div', 'fromElem', 'From: ' + list[randNum].sender);
 					dateBox.appendChild(senderBox);
 
 					var subjBox = createElem('div', 'subjElem', list[randNum].subject);
@@ -85,7 +85,7 @@
 
 				// RECURRING MESSAGE GENERATOR
 				setInterval(getNewMessage, 5000);
-
+				
       };
     </script>
 	</head>
