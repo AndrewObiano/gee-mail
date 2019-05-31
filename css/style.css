@@ -1,7 +1,35 @@
-#mailBody{
-    display: none;
+.body{
+    
 }
 
-#messages{
-    list-style: none;
+#mainHeader{
+    text-align: center;
+    margin: 15px;
+    padding: 15px;
+}
+
+.dateElem{
+    border: 1px solid black;
+    margin-left: auto;
+    margin-right: auto;
+    margin-block-end: 10px;
+    padding: 10px;
+    box-align: center;
+    width: 500px;
+    box-shadow: 4px 4px 4px grey;
+    transition-duration: 400ms;
+}
+
+#inboxCount{
+    border: 1px solid black;
+    margin-left: auto;
+    margin-right: auto;
+    margin-block-end: 10px;
+    text-align: center;
+    padding: 15px;
+    width: 75px;
+}
+
+.dateElem:hover{
+    background: rgb(235, 235, 235);
 }

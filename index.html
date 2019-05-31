@@ -21,10 +21,6 @@
 
 				for(i=0; i<10; i++){
 
-					// update inbox counter
-					// counter++;
-					// inboxCount.innerHTML = counter;
-
 					list.push(window.geemails[i]);
 
 					var dateBox = createElem('div', 'dateElem', list[i].date);
@@ -46,27 +42,30 @@
 					// CREATING NEW MESSAGES
 					function getNewMessage(){
 
+						// increase inbox number
 					counter++;
-					inboxCount.innerHTML = counter;
+					inboxCount.innerHTML = 'Inbox: ' + counter;
 
-					for(i=0; i<1; i++){
-						list.push(window.geemails[i]);
+						// so I can pull a random element from the list of emails
+					var randNum = Math.floor(Math.random()*list.length);
 
-						var dateBox = createElem('div', 'dateElem', list[i].date);
-						main.appendChild(dateBox);
+					// repeated code from the original first 10 emails
+					list.push(window.geemails[randNum]);
 
-						var senderBox = createElem('div', 'fromElem', list[i].sender);
-						dateBox.appendChild(senderBox);
+					var dateBox = createElem('div', 'dateElem', list[randNum].date);
+					main.appendChild(dateBox);
 
-						var subjBox = createElem('div', 'subjElem', list[i].subject);
-						dateBox.appendChild(subjBox);
+					var senderBox = createElem('div', 'fromElem', list[randNum].sender);
+					dateBox.appendChild(senderBox);
 
-						var bodyBox = createElem('p', 'bodyElem', list[i].body);
-						bodyBox.style.display = 'none';
-						dateBox.appendChild(bodyBox);
+					var subjBox = createElem('div', 'subjElem', list[randNum].subject);
+					dateBox.appendChild(subjBox);
 
-						dateBox.addEventListener('click', showBody);
-						}
+					var bodyBox = createElem('p', 'bodyElem', list[randNum].body);
+					bodyBox.style.display = 'none';
+					dateBox.appendChild(bodyBox);
+
+					dateBox.addEventListener('click', showBody);
 					}
 
 				// SHOW AND HIDE THE BODY
@@ -80,7 +79,7 @@
 				}
 
 				// INBOX COUNTER
-				var counts = createElem('div', 'counter', list.length);
+				var counts = createElem('div', 'counter', 'Inbox: ' + list.length);
 				inboxCount.appendChild(counts);
 				var counter = 10;
 
@@ -93,7 +92,7 @@
 	<body>
 
 		<header class="title">
-			<h1>GeeMail</h1>
+			<h1 id="mainHeader">GeeMail</h1>
 			<div id="inboxCount"></div>
 		</header>
 
