@@ -7,33 +7,85 @@
         // ALL OF YOUR JAVASCRIPT CODE SHOULD GO HERE. 
         // We have to use window.onload so your JavaScript doesn't execute until the page has loaded and all HTML has been downloaded to your browser
 				
+				// LETS BUILD SOME ELEMENTS
+				function createElem(elem, label, inside){
+					var elemBox = document.createElement(elem);
+					elemBox.className = label;
+					elemBox.innerHTML = inside;
+
+					return elemBox;
+				}
+
+				// LIST THE FIRST 10 EMAILS AND BODIES
 				var list = [];
 
 				for(i=0; i<10; i++){
+
+					// update inbox counter
+					// counter++;
+					// inboxCount.innerHTML = counter;
+
 					list.push(window.geemails[i]);
 
-					var messageElem = document.createElement('li');
-					messageElem.id = 'messages';
-					main.appendChild(messageElem);
-					messageElem.innerHTML = list[i].date + '<br>' + list[i].sender + '<br>' + list[i].subject;
+					var dateBox = createElem('div', 'dateElem', list[i].date);
+					main.appendChild(dateBox);
 
-					var bodyElem = document.createElement('p');
-					bodyElem.id = 'mailBody';
-					bodyElem.innerHTML = list[i].body;
-					main.appendChild(bodyElem);
+					var senderBox = createElem('div', 'fromElem', list[i].sender);
+					dateBox.appendChild(senderBox);
+
+					var subjBox = createElem('div', 'subjElem', list[i].subject);
+					dateBox.appendChild(subjBox);
+
+					var bodyBox = createElem('p', 'bodyElem', list[i].body);
+					dateBox.appendChild(bodyBox);
+					bodyBox.style.display = 'none';
+
+					dateBox.addEventListener('click', showBody);
 				}
+					
+					// CREATING NEW MESSAGES
+					function getNewMessage(){
 
-				mailBody.style.display = 'none'; // WHY YOU NO WORK
+					counter++;
+					inboxCount.innerHTML = counter;
 
-				messages.addEventListener('click', showBody);
+					for(i=0; i<1; i++){
+						list.push(window.geemails[i]);
 
+						var dateBox = createElem('div', 'dateElem', list[i].date);
+						main.appendChild(dateBox);
+
+						var senderBox = createElem('div', 'fromElem', list[i].sender);
+						dateBox.appendChild(senderBox);
+
+						var subjBox = createElem('div', 'subjElem', list[i].subject);
+						dateBox.appendChild(subjBox);
+
+						var bodyBox = createElem('p', 'bodyElem', list[i].body);
+						bodyBox.style.display = 'none';
+						dateBox.appendChild(bodyBox);
+
+						dateBox.addEventListener('click', showBody);
+						}
+					}
+
+				// SHOW AND HIDE THE BODY
 				function showBody(){
-					if(mailBody.style.display == 'block'){
-						mailBody.style.display = 'none';
+					var show = this.querySelector('.bodyElem');
+					if(show.style.display == 'block'){
+						show.style.display = 'none';
 					}else{
-						mailBody.style.display = 'block';
+						show.style.display = 'block';
 					}
 				}
+
+				// INBOX COUNTER
+				var counts = createElem('div', 'counter', list.length);
+				inboxCount.appendChild(counts);
+				var counter = 10;
+
+				// RECURRING MESSAGE GENERATOR
+				setInterval(getNewMessage, 5000);
 
       };
     </script>
@@ -41,7 +93,8 @@
 	<body>
 
 		<header class="title">
-			<h3>GeeMail</h3>
+			<h1>GeeMail</h1>
+			<div id="inboxCount"></div>
 		</header>
 
 		<div class="container" id="main">
