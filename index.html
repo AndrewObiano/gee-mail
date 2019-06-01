@@ -40,9 +40,11 @@
 				}
 					
 					// CREATING NEW MESSAGES
-					function getNewMessage(){
+					function generate(){
 
-						// increase inbox number
+					var newMessage = getNewMessage();
+
+					// increase inbox number
 					counter++;
 					inboxCount.innerHTML = 'Inbox: ' + counter;
 
@@ -52,16 +54,16 @@
 					// repeated code from the original first 10 emails
 					list.push(window.geemails[randNum]);
 
-					var dateBox = createElem('div', 'dateElem', list[randNum].date);
+					var dateBox = createElem('div', 'dateElem', newMessage.date);
 					main.appendChild(dateBox);
 
-					var senderBox = createElem('div', 'fromElem', 'From: ' + list[randNum].sender);
+					var senderBox = createElem('div', 'fromElem', 'From: ' + newMessage.sender);
 					dateBox.appendChild(senderBox);
 
-					var subjBox = createElem('div', 'subjElem', list[randNum].subject);
+					var subjBox = createElem('div', 'subjElem', newMessage.subject);
 					dateBox.appendChild(subjBox);
 
-					var bodyBox = createElem('p', 'bodyElem', list[randNum].body);
+					var bodyBox = createElem('p', 'bodyElem', newMessage.body);
 					bodyBox.style.display = 'none';
 					dateBox.appendChild(bodyBox);
 
@@ -84,7 +86,7 @@
 				var counter = 10;
 
 				// RECURRING MESSAGE GENERATOR
-				setInterval(getNewMessage, 10000);
+				setInterval(generate, 1000);
 				
       };
     </script>
