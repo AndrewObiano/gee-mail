@@ -37,6 +37,7 @@ body{
     height: auto;
     box-shadow: 4px 4px 4px grey;
     transition-duration: 400ms;
+    border-radius: 5px;
 }
 
 #inboxCount{
@@ -47,6 +48,7 @@ body{
     text-align: center;
     padding: 15px;
     width: 75px;
+    border-radius: 5px;
 }
 
 .dateElem:hover{
